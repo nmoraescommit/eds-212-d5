@@ -1,0 +1,57 @@
+---
+title: "D5S1"
+author: "NM"
+format: html
+execute: 
+  warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| message: false
+
+# load libraries ----
+library(tidyverse)
+```
+
+```{r}
+#| include: false
+head(starwars, n = 16)
+tail(starwars)
+dim(starwars)
+```
+
+- create a gg plot, scatter, of mass (y) and height (x)
+- update the colour of the point so that it changes based on value of 'mass'
+
+```{r}
+ggplot(starwars, aes(x = height, y = mass, colour = mass)) +
+  geom_point() +
+  labs(x = "Height (cm)",
+       y = "Mass (cm)")
+```
+
+- create a histogram of character heights
+- update the fill color to purple and the outside border line of each histogram bin to orange
+- update the axis lables
+- update your code chunk option so that only your code and output graph appear in the rendered doc (no warning s or messages)
+
+```{r}
+#| fig-cap: "This is my figure caption"
+#| fig-alt: "This is some alt text"
+ggplot(data = starwars, aes(x = height))+
+  geom_histogram(fill = "purple", color = "orange")+
+  labs(x = "Height (cm)",
+       y = "Count (ones)")
+
+```
+
+df$colname
+
+```{r}
+starwars$height
+sw_height_mean <- round(mean(starwars$height, na.rm = TRUE),3)
+```
+
+The mean height of all starwars character is `r sw_height_mean`
